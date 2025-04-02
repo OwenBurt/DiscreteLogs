@@ -16,7 +16,7 @@ public class DiscreteLogsTester {
             boolean primitiveRoot = thing.isPrimitiveRoot();
             ArrayList<Integer> distPrimes = thing.distinctPrimes();
             int phiOfN = thing.phiOfN();
-            HashMap<Integer, Integer> brown = thing.indexNofBase();
+            HashMap<Integer, Integer> brown = thing.dLogMap();
             System.out.println(); 
             System.out.println("--------------------------");
             System.out.println("Is " + b + " a primitive root: " + primitiveRoot);

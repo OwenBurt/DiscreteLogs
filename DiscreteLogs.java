@@ -94,7 +94,7 @@ public class DiscreteLogs{
         return (int) phi;
     }
 
-     public int order(){
+    public int order(){
         int baseCounter = this.base;
         for (int i=1; i < this.n; i++){
             if ((baseCounter%this.n)==1){
@@ -114,18 +114,17 @@ public class DiscreteLogs{
         }
     }
 
-    public HashMap<Integer, Integer> indexNofBase(){
-        HashMap<Integer, Integer> hashbrown = new HashMap<>(phiOfN());
-        try {
-            if (!isPrimitiveRoot()){
-                throw new IllegalArgumentException();
+    public HashMap<Integer, Integer> dLogMap(){
+        HashMap<Integer, Integer> hashbrown = new HashMap<>();
+        int baseCounter = this.base;
+        for (int i=1; i < this.n; i++){
+            if ((baseCounter%this.n)==1){
+                hashbrown.put(i, baseCounter);
             }
-            for (int i=0; i<=phiOfN(); i++){
-                hashbrown.put(i, ((int) Math.pow(this.base, i)%this.n));
-            }
-        } catch (IllegalArgumentException e) {
-            
-        };
+            hashbrown.put(i, baseCounter);
+            baseCounter=(baseCounter*this.base)%this.n;
+
+        }
         return hashbrown;
     }
 }
