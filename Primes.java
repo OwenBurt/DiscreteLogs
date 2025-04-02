@@ -47,5 +47,7 @@ public class Primes{
         int max = promptRange(min, Integer.MAX_VALUE, "Enter maximum value: ");
         System.out.println("Printing every prime between " + min + " and " + max + ":");
         printPrimes(min, max);
+
+        //small edit
     }
 }
