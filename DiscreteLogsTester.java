@@ -7,7 +7,7 @@ public class DiscreteLogsTester {
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
         System.out.println("enter 1 to start: ");
-        while(scan.nextInt() != 0){
+        while(scan.nextInt() == 1){
             System.out.print("Enter a base: ");
             int b = scan.nextInt();
             System.out.print("Enter mod number n: ");

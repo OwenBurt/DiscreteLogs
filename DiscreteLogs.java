@@ -61,6 +61,14 @@ public class DiscreteLogs{
         this.n = n;
     }
 
+    public int getNum(){
+        return this.n;
+    }
+
+    public int getBase(){
+        return this.base;
+    }
+
     public ArrayList<Integer> distinctPrimes(){
         int num = this.n;
         ArrayList<Integer> distinctPrimes = new ArrayList<>(this.n/2);
@@ -86,14 +94,15 @@ public class DiscreteLogs{
         return (int) phi;
     }
 
-    public int order(){
-        int b = -1;
-        for (int i = 1; i < this.n; i++){
-            if ((Math.pow(this.base, i)%this.n) == 1){
-                b =  i;
+     public int order(){
+        int baseCounter = this.base;
+        for (int i=1; i < this.n; i++){
+            if ((baseCounter%this.n)==1){
+                return i;
             }
+            baseCounter=(baseCounter*this.base)%this.n;
         }
-        return b;
+        return -1;
     }
 
     public boolean isPrimitiveRoot(){
@@ -106,14 +115,17 @@ public class DiscreteLogs{
     }
 
     public HashMap<Integer, Integer> indexNofBase(){
-        if (!isPrimitiveRoot()){
-            throw new IllegalArgumentException("Not a primitive root!");
-        }
         HashMap<Integer, Integer> hashbrown = new HashMap<>(phiOfN());
-        for (int i = 0; i <= phiOfN(); i++){
-            hashbrown.put(i, ((int) Math.pow(this.base, i)%this.n));
-        }
+        try {
+            if (!isPrimitiveRoot()){
+                throw new IllegalArgumentException();
+            }
+            for (int i=0; i<=phiOfN(); i++){
+                hashbrown.put(i, ((int) Math.pow(this.base, i)%this.n));
+            }
+        } catch (IllegalArgumentException e) {
+            
+        };
         return hashbrown;
-
     }
 }
