@@ -63,7 +63,7 @@ public class DiscreteLogs{
 
     public ArrayList<Integer> distinctPrimes(){
         int num = this.n;
-        ArrayList<Integer> distinctPrimes = new ArrayList<>();
+        ArrayList<Integer> distinctPrimes = new ArrayList<>(this.n/2);
         for (int i = 0; i < primes.length; i++){
             while (num%primes[i] == 0){
                 distinctPrimes.add(primes[i]);
@@ -110,7 +110,7 @@ public class DiscreteLogs{
             throw new IllegalArgumentException("Not a primitive root!");
         }
         HashMap<Integer, Integer> hashbrown = new HashMap<>(phiOfN());
-        for (int i = 0; i < phiOfN(); i++){
+        for (int i = 0; i <= phiOfN(); i++){
             hashbrown.put(i, ((int) Math.pow(this.base, i)%this.n));
         }
         return hashbrown;

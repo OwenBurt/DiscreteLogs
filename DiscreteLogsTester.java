@@ -10,7 +10,7 @@ public class DiscreteLogsTester {
         while(scan.nextInt() != 0){
             System.out.print("Enter a base: ");
             int b = scan.nextInt();
-            System.out.print("Enter n: ");
+            System.out.print("Enter mod number n: ");
             int n = scan.nextInt();
             DiscreteLogs thing = new DiscreteLogs(b, n);
             boolean primitiveRoot = thing.isPrimitiveRoot();
@@ -20,7 +20,7 @@ public class DiscreteLogsTester {
             System.out.println(); 
             System.out.println("--------------------------");
             System.out.println("Is " + b + " a primitive root: " + primitiveRoot);
-            System.out.println("Phi of n is: " + phiOfN);
+            System.out.println("\u03C6(n) is: " + phiOfN);
             System.out.println("List of unique prime factors: " + distPrimes);
             System.out.println("Discrete log map: " + brown);
             System.out.println("--------------------------");
