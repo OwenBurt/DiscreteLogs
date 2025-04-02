@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DiscreteLogs{
     
@@ -102,5 +103,17 @@ public class DiscreteLogs{
         else {
             return false;
         }
+    }
+
+    public HashMap<Integer, Integer> indexNofBase(){
+        if (!isPrimitiveRoot()){
+            throw new IllegalArgumentException("Not a primitive root!");
+        }
+        HashMap<Integer, Integer> hashbrown = new HashMap<>(phiOfN());
+        for (int i = 0; i < phiOfN(); i++){
+            hashbrown.put(i, ((int) Math.pow(this.base, i)%this.n));
+        }
+        return hashbrown;
+
     }
 }
