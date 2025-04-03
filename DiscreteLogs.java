@@ -119,9 +119,9 @@ public class DiscreteLogs{
         int baseCounter = this.base;
         for (int i=1; i < this.n; i++){
             if ((baseCounter%this.n)==1){
-                hashbrown.put(i, baseCounter);
+                hashbrown.put(baseCounter, i);
             }
-            hashbrown.put(i, baseCounter);
+            hashbrown.put(baseCounter, i);
             baseCounter=(baseCounter*this.base)%this.n;
 
         }
