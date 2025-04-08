@@ -19,11 +19,15 @@ public class DiscreteLogsTester {
                 ArrayList<Integer> distPrimes = thing.distinctPrimes();
                 int phiOfN = thing.phiOfN();
                 HashMap<Integer, Integer> brown = thing.dLogMap();
+                ArrayList<Integer> pRoots = thing.allPrimitiveRoots();
                 System.out.println(); 
                 System.out.println("--------------------------");
                 System.out.println("Is " + b + " a primitive root: " + primitiveRoot);
                 System.out.println("\u03C6(n) is: " + phiOfN);
                 System.out.println("List of unique prime factors: " + distPrimes);
+                System.out.println("__________________________");
+                System.out.println("All primitive roots: " + pRoots);
+                System.out.println("__________________________");
                 System.out.println("Discrete log map: " + brown);
                 System.out.println("--------------------------");
                 System.out.println();

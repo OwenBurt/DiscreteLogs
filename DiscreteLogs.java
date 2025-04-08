@@ -77,7 +77,21 @@ public class DiscreteLogs{
                 distinctPrimes.add(primes[i]);
                 num/=primes[i];
             }
-            if (num ==0){
+            if (num == 0){
+                return distinctPrimes;
+            }
+        }
+        return distinctPrimes;
+    }
+
+    public ArrayList<Integer> distinctPrimes(int num){
+        ArrayList<Integer> distinctPrimes = new ArrayList<>(num/2);
+        for (int i = 0; i < primes.length; i++){
+            while (num%primes[i] == 0){
+                distinctPrimes.add(primes[i]);
+                num/=primes[i];
+            }
+            if (num == 0){
                 return distinctPrimes;
             }
         }
@@ -88,7 +102,7 @@ public class DiscreteLogs{
         ArrayList<Integer> distinctPrimes = distinctPrimes();
         double phi = 1.0;
         for (int elem : distinctPrimes){
-            phi = phi*(1-((double) 1/elem));
+            phi = phi*(1 - ((double) 1/elem));
         }
         phi = phi*this.n;
         return (int) phi;
@@ -96,7 +110,7 @@ public class DiscreteLogs{
 
     public int order(){
         int baseCounter = this.base;
-        for (int i=1; i < this.n; i++){
+        for (int i = 1; i < this.n; i++){
             if ((baseCounter%this.n)==1){
                 return i;
             }
@@ -105,8 +119,19 @@ public class DiscreteLogs{
         return -1;
     }
 
+    public int order(int base){
+        int baseCounter = base;
+        for (int i = 1; i < this.n; i++){
+            if ((baseCounter%this.n)==1){
+                return i;
+            }
+            baseCounter=(baseCounter*base)%this.n;
+        }
+        return -1;
+    }
+
     public boolean isPrimitiveRoot(){
-        if (order()==phiOfN()){
+        if (order() == phiOfN()){
             return true;
         }
         else {
@@ -117,7 +142,7 @@ public class DiscreteLogs{
     public HashMap<Integer, Integer> dLogMap(){
         HashMap<Integer, Integer> hashbrown = new HashMap<>();
         int baseCounter = this.base;
-        for (int i=1; i < this.n; i++){
+        for (int i = 1; i < this.n; i++){
             if ((baseCounter%this.n)==1){
                 hashbrown.put(baseCounter, i);
             }
@@ -126,5 +151,17 @@ public class DiscreteLogs{
 
         }
         return hashbrown;
+    }
+
+    public ArrayList<Integer> allPrimitiveRoots(){
+        int phi = phiOfN();
+        ArrayList<Integer> pRoots = new ArrayList<Integer>(this.n);
+        ArrayList<Integer> list = distinctPrimes(phi);
+        for (int i = 1; i<this.n; i++){
+            if (order(i)==phi){
+                pRoots.add(i);
+            }
+        }
+        return pRoots;
     }
 }
