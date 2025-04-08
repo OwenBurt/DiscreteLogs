@@ -156,7 +156,6 @@ public class DiscreteLogs{
     public ArrayList<Integer> allPrimitiveRoots(){
         int phi = phiOfN();
         ArrayList<Integer> pRoots = new ArrayList<Integer>(this.n);
-        ArrayList<Integer> list = distinctPrimes(phi);
         for (int i = 1; i<this.n; i++){
             if (order(i)==phi){
                 pRoots.add(i);
